@@ -112,6 +112,7 @@
 		if (typeof smart.patient === "object") {
 			console.log(smart);
 			var patientApi = smart.patient.api;
+			var encounterApi = smart.encounter.api;
 			
 			patientApi.fetchAll({type: 'Patient'}).then(function(response) {
 				console.log(response);
