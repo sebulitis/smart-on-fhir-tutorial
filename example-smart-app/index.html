@@ -128,6 +128,22 @@
 					});
 				}
 			});
+			
+			patientApi.fetchAll({type: 'Encounter'}).then(function(response){
+				console.log(response);
+				response = response[0];
+				$("#demo-fin").html((response.identifier));
+				$("#demo-loc").html((response.location));
+				$("#demo-rfv").html((response.reason));
+				//$("#demo-age").innerHTML = "";
+				if (response.identifier && response.identifier.length) {
+					response.identifier.forEach(function(obj,idx){
+						if (obj.system === "urn:oid:1.1.1.1.1.1") {
+							$("#demo-mrn").html(obj.value);
+						}
+					});
+				}
+			});
 		}
 	}
 	function notReady(response) {
